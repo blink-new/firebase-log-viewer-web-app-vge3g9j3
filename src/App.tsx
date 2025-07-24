@@ -74,10 +74,6 @@ function App() {
 
   // Handle tab changes
   const handleTabChange = (tabValue: string) => {
-    if (tabValue === 'insights') {
-      // Don't change tab directly for insights, let user select device first
-      return
-    }
     updateNavigation({ currentTab: tabValue, deviceInsightsDevice: null })
   }
 
