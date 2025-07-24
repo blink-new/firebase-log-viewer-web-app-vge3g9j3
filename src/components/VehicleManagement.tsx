@@ -14,6 +14,7 @@ import {
 import { VehicleService } from '../services/vehicleService'
 import { VehicleAssignment } from '../types/vehicle'
 import { IgnitionLog, ExceptionLog } from '../types/logs'
+import { parseTimestamp } from '../lib/dateUtils'
 
 interface VehicleManagementProps {
   ignitionLogs: IgnitionLog[]
@@ -473,7 +474,7 @@ export function VehicleManagement({ ignitionLogs, exceptionLogs }: VehicleManage
                               <div className="flex gap-4 text-sm text-gray-500">
                                 <span>{stats.ignitionCount} ignitions</span>
                                 <span>{stats.exceptionCount} exceptions</span>
-                                <span>Updated: {assignment.updatedAt.toLocaleDateString()}</span>
+                                <span>Updated: {parseTimestamp(assignment.updatedAt).toLocaleDateString()}</span>
                               </div>
                               {assignment.notes && (
                                 <div className="text-sm text-gray-600 mt-2 italic">

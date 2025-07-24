@@ -17,10 +17,22 @@ export class VehicleService {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
         const parsed = JSON.parse(stored)
+        // Convert date strings back to Date objects
+        const assignments: Record<string, VehicleAssignment> = {}
+        
+        for (const [imei, assignment] of Object.entries(parsed.assignments || {})) {
+          const typedAssignment = assignment as any
+          assignments[imei] = {
+            ...typedAssignment,
+            createdAt: new Date(typedAssignment.createdAt),
+            updatedAt: new Date(typedAssignment.updatedAt)
+          }
+        }
+        
         this.config = {
           assignments: {
             ...DEFAULT_VEHICLE_ASSIGNMENTS,
-            ...parsed.assignments
+            ...assignments
           }
         }
       }
