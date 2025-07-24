@@ -343,11 +343,10 @@ function App() {
                       const exceptionCount = exceptionLogs.filter(log => (log.deviceImei || log.imei) === deviceImei).length
                       
                       return (
-                        <Button
+                        <button
                           key={deviceImei}
-                          variant="outline"
                           onClick={() => handleDeviceInsightsSelect(deviceImei!)}
-                          className="flex items-center justify-between p-6 h-auto border-2 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
+                          className="flex items-center justify-between p-6 h-auto border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 cursor-pointer rounded-lg bg-white w-full text-left"
                         >
                           <div className="text-left flex-1">
                             <div className="flex items-center gap-3 mb-2">
@@ -380,7 +379,7 @@ function App() {
                             </div>
                           </div>
                           <Eye className="h-6 w-6 text-gray-400 ml-4 flex-shrink-0" />
-                        </Button>
+                        </button>
                       )
                     })}
                   </div>
